@@ -1,6 +1,7 @@
 # NpbLogging
 
-TODO: Write a gem description
+This is a simple logging module that inserts a seperator in the log file, adds the user_id and ip addresses to the start and end lines of an action
+if they are present, and supports the addition of log notes
 
 ## Installation
 
@@ -18,7 +19,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+You must initialize the logger by adding a file in your initializers directory with the following line:
+
+    require "npb_logging"
+    NpbLogging.setup
+
 
 ## Contributing
 

@@ -20,7 +20,7 @@ module NpbLogging
       message << " [#{extract_user_id(payload)}]"
 
       logger.info message
-      logger.info "params=#{params.inspect}"
+      logger.info "  params=#{params.inspect}"
     end
 
     def process_action(event)
@@ -68,9 +68,11 @@ module NpbLogging
       end
     end
 
-
+    # Extract the user id from the payload
     def extract_user_id(payload)
-      session = payload[:session] and session[:user_id] || session[:tmp_user_id]
+      if session = payload[:session] 
+        Config.user_id_session_keys.map { |key| session[key] }.compact.first
+      end
     end
 
     # extract the added log notes

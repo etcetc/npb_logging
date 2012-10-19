@@ -1,5 +1,6 @@
 module NpbLogging
 
+  require 'npb_logging/config.rb'
   require 'npb_logging/log_subscriber.rb'
   require 'npb_logging/subscriptions.rb'
 
