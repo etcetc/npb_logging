@@ -11,7 +11,7 @@ module NpbLogging
 
       logger.info 
       logger.info "===================="
-      message = payload[:xhr] ? "AJAX" : ""
+      message = payload[:xhr] ? "AJAX " : ""
       message << "#{format} #{payload[:method]} #{payload[:path]} action=#{payload[:params]['controller']}##{payload[:params]['action']}"
 
       message << " from #{payload[:ip]}"
