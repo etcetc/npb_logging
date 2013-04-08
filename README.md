@@ -24,6 +24,9 @@ You must initialize the logger by adding a file in your initializers directory w
     require "npb_logging"
     NpbLogging.setup
 
+## Change Log
+0.0.2: Adding the path to the completed line for easier tracing
+
 ## Contributing
 
 1. Fork it

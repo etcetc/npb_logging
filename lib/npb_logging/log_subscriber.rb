@@ -25,7 +25,7 @@ module NpbLogging
 
     def process_action(event)
       payload = event.payload
-      message = "Completed [#{extract_status(payload)}]"
+      message = "Completed #{payload[:path]} [#{extract_status(payload)}]"
       runtimes = format_runtimes(event) 
       message << (error?(payload) ? "in #{runtimes[:total]}ms" : " in #{runtimes[:total]} (view: #{runtimes[:view]}, db: #{runtimes[:db]})")
       message << " [#{extract_user_id(payload)}]"
