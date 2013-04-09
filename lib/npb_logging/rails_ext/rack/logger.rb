@@ -8,18 +8,14 @@ module Rails
     # that say:
     # Started GET / for 192.168.2.1...
     class Logger
-      # Overwrites Rails 3.2.12 code that logs new requests
-      if defined?  :started_request_message
-        def started_request_message(request)
-          ""
-        end
-      else
-        # Overwrites Rails 3.2 code that logs new requests
-        def call_app(env)
-          @app.call(env)
-        ensure
-          ActiveSupport::LogSubscriber.flush_all!
-        end
+      # Overwrites the code that logs new requests.
+      # In Rails 3.2.12 the signature changed from 
+      # call_app(env) to call_app(request,env)
+      def call_app(*args)
+        env = args.last
+        @app.call(env)
+      ensure
+        ActiveSupport::LogSubscriber.flush_all!
       end
 
       # Overwrites Rails 3.0/3.1 code that logs new requests
